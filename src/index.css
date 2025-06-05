@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom button styles */
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 active:scale-95;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg hover:shadow-xl hover:from-primary-600 hover:to-primary-700;
+  }
+  
+  .btn-secondary {
+    @apply bg-gradient-to-r from-secondary-500 to-secondary-600 text-white shadow-lg hover:shadow-xl hover:from-secondary-600 hover:to-secondary-700;
+  }
+  
+  .btn-accent {
+    @apply bg-gradient-to-r from-accent-500 to-accent-600 text-white shadow-lg hover:shadow-xl hover:from-accent-600 hover:to-accent-700;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary-500 text-primary-500 bg-transparent hover:bg-primary-500 hover:text-white;
+  }
+  
+  .card {
+    @apply bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl border border-white/20 p-6 hover:shadow-2xl transition-all duration-300;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all duration-200 bg-white/80 backdrop-blur-sm;
+  }
+  
+  .floating-label {
+    @apply absolute left-4 top-3 text-gray-500 transition-all duration-200 pointer-events-none;
+  }
+  
+  .floating-label.active {
+    @apply -top-2 left-2 text-xs bg-white px-2 text-primary-500 rounded;
+  }
+}
+
+/* Background patterns */
+.hero-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+}
+
+.section-bg {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+/* Glassmorphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Floating elements */
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating:nth-child(2n) {
+  animation-delay: -2s;
+}
+
+.floating:nth-child(3n) {
+  animation-delay: -4s;
+}
+
+/* Calendar customization */
+.react-calendar {
+  @apply w-full max-w-md mx-auto bg-white/80 backdrop-blur-lg border-0 rounded-2xl shadow-xl;
+}
+
+.react-calendar__navigation {
+  @apply flex items-center justify-between p-4;
+}
+
+.react-calendar__navigation button {
+  @apply p-2 rounded-xl hover:bg-primary-100 transition-colors;
+}
+
+.react-calendar__tile {
+  @apply p-3 text-center hover:bg-primary-100 rounded-xl transition-colors;
+}
+
+.react-calendar__tile--active {
+  @apply bg-primary-500 text-white hover:bg-primary-600;
+}
+
+.react-calendar__tile--now {
+  @apply bg-secondary-100 text-secondary-700;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .card {
+    @apply p-4;
+  }
+  
+  .btn {
+    @apply px-4 py-2 text-sm;
+  }
+  
+  h1 {
+    @apply text-3xl;
+  }
+  
+  h2 {
+    @apply text-2xl;
+  }
+}
+
+/* Loading animations */
+.skeleton {
+  @apply animate-pulse bg-gray-200 rounded;
+}
+
+/* Toast notifications */
+.toast {
+  @apply fixed top-4 right-4 z-50 p-4 rounded-xl shadow-lg backdrop-blur-lg;
+}
+
+.toast-success {
+  @apply bg-green-500/90 text-white;
+}
+
+.toast-error {
+  @apply bg-red-500/90 text-white;
+}
+
+.toast-info {
+  @apply bg-blue-500/90 text-white;
+}
+
+/* Ripple effect */
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.ripple-effect:active::before {
+  width: 300px;
+  height: 300px;
+}

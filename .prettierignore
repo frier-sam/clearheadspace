@@ -1,0 +1,27 @@
+# Build outputs
+build/
+dist/
+lib/
+
+# Dependencies
+node_modules/
+
+# Generated files
+coverage/
+.firebase/
+*.log
+
+# Config files that should not be formatted
+package-lock.json
+yarn.lock
+
+# Firebase files
+.firebaserc
+firebase-debug.log
+
+# Environment files
+.env*
+
+# IDE files
+.vscode/
+.idea/

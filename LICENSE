@@ -1,0 +1,70 @@
+MIT License
+
+Copyright (c) 2024 ClearHeadSpace
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## Third-Party Licenses
+
+This project uses the following open-source libraries:
+
+### React
+- License: MIT
+- Copyright (c) Facebook, Inc. and its affiliates
+
+### Firebase
+- License: Apache License 2.0
+- Copyright (c) Google Inc.
+
+### Tailwind CSS
+- License: MIT
+- Copyright (c) Tailwind Labs, Inc.
+
+### Framer Motion
+- License: MIT
+- Copyright (c) Framer B.V.
+
+### Heroicons
+- License: MIT
+- Copyright (c) Tailwind Labs, Inc.
+
+### React Hook Form
+- License: MIT
+- Copyright (c) 2019-present Beier Luo and other contributors
+
+### Date-fns
+- License: MIT
+- Copyright (c) 2016-present date-fns contributors
+
+For a complete list of dependencies and their licenses, please refer to the package.json file and the node_modules directory.
+
+---
+
+## Privacy and Data Protection
+
+This software is designed to handle sensitive mental health information. Users of this software must ensure compliance with applicable privacy laws and regulations, including but not limited to:
+
+- Health Insurance Portability and Accountability Act (HIPAA)
+- General Data Protection Regulation (GDPR)
+- California Consumer Privacy Act (CCPA)
+- Other applicable local privacy laws
+
+The software maintainers are not responsible for how this software is deployed, configured, or used by third parties. It is the responsibility of the deploying organization to ensure proper security measures, data encryption, access controls, and compliance with applicable regulations.
