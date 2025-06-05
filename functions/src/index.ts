@@ -1,9 +1,9 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
-import * as nodemailer from 'nodemailer';
-import * as express from 'express';
-import * as cors from 'cors';
-import * as helmet from 'helmet';
+import nodemailer from 'nodemailer';
+import express, { Request, Response } from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
 import { v4 as uuidv4 } from 'uuid';
 
 // Initialize Firebase Admin
@@ -11,7 +11,7 @@ admin.initializeApp();
 const db = admin.firestore();
 
 // Email transporter configuration
-const transporter = nodemailer.createTransporter({
+const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: functions.config().email?.user || process.env.EMAIL_USER,
@@ -407,11 +407,11 @@ export const generateWeeklyReport = functions.pubsub.schedule('0 9 * * 1').onRun
 });
 
 // Express API endpoints
-app.get('/health', (req, res) => {
+app.get('/health', (req: Request, res: Response) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-app.post('/webhook/stripe', express.raw({ type: 'application/json' }), async (req, res) => {
+app.post('/webhook/stripe', express.raw({ type: 'application/json' }), async (req: Request, res: Response) => {
   // Handle Stripe webhooks
   console.log('Stripe webhook received');
   res.json({ received: true });
