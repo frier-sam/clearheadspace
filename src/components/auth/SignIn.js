@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
-import { 
-  EyeIcon, 
-  EyeSlashIcon, 
-  HeartIcon,
-  ArrowLeftIcon 
+import {
+  EyeIcon,
+  EyeSlashIcon,
+  ArrowLeftIcon
 } from '@heroicons/react/24/outline';
+import Logo from '../Logo';
 import { useAuth } from '../../contexts/AuthContext';
 import LoadingSpinner from '../LoadingSpinner';
 import { validateEmail } from '../../utils/helpers';
@@ -97,9 +97,7 @@ const SignIn = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex items-center justify-center space-x-2 mb-4"
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center">
-                <HeartIcon className="w-7 h-7 text-white" />
-              </div>
+              <Logo className="w-12 h-12" />
               <span className="text-2xl font-bold font-display bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
                 ClearHeadSpace
               </span>
