@@ -40,45 +40,10 @@
         transition: opacity 0.5s ease-out;
       }
       
-      .loading-heart {
-        width: 60px;
-        height: 60px;
-        background: #FF6B9D;
-        border-radius: 50px 50px 0 0;
-        position: relative;
-        transform: rotate(45deg);
-        animation: heartbeat 1.5s ease-in-out infinite;
-      }
-      
-      .loading-heart::before,
-      .loading-heart::after {
-        content: '';
-        width: 60px;
-        height: 60px;
-        background: #FF6B9D;
-        border-radius: 50px 50px 0 0;
-        position: absolute;
-      }
-      
-      .loading-heart::before {
-        left: -30px;
-        transform: rotate(-45deg);
-        transform-origin: 30px 30px;
-      }
-      
-      .loading-heart::after {
-        top: -30px;
-        transform: rotate(45deg);
-        transform-origin: 0 30px;
-      }
-      
-      @keyframes heartbeat {
-        0%, 20%, 50%, 80%, 100% {
-          transform: rotate(45deg) scale(1);
-        }
-        40%, 60% {
-          transform: rotate(45deg) scale(1.1);
-        }
+      .loading-logo {
+        width: 70px;
+        height: 70px;
+        animation: pulse 1.6s ease-in-out infinite;
       }
       
       .floating-shapes {
@@ -170,13 +135,22 @@
           transform: translateY(-100px) rotate(360deg);
         }
       }
+
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
     </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     
     <div id="loading" class="loading-screen">
-      <div class="loading-heart"></div>
+      <img src="%PUBLIC_URL%/logo.svg" class="loading-logo" alt="loading" />
     </div>
     
     <div class="floating-shapes">
