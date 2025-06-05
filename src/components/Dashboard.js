@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
+import {
   CalendarIcon,
   UserGroupIcon,
   ChatBubbleLeftRightIcon,
@@ -14,12 +14,14 @@ import {
   ArrowRightIcon,
   VideoCameraIcon,
   PhoneIcon,
-  StarIcon
+  StarIcon,
+  UserIcon
 } from '@heroicons/react/24/outline';
 import { useAuth } from '../contexts/AuthContext';
 import { useBookings } from '../hooks/useBookings';
 import { useTherapists } from '../hooks/useTherapists';
 import LoadingSpinner from './LoadingSpinner';
+import Logo from './Logo';
 import { formatDate, formatTime, getInitials, getAvatarColor } from '../utils/helpers';
 
 const Dashboard = () => {
@@ -30,6 +32,7 @@ const Dashboard = () => {
   
   const [greeting, setGreeting] = useState('');
   const [showQuickActions, setShowQuickActions] = useState(false);
+  const [avatarError, setAvatarError] = useState(false);
 
   useEffect(() => {
     const updateGreeting = () => {
@@ -104,9 +107,7 @@ const Dashboard = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center">
-                <HeartIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              </div>
+              <Logo className="w-8 h-8 sm:w-10 sm:h-10" />
               <span className="text-lg sm:text-xl font-bold font-display bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
                 ClearHeadSpace
               </span>
@@ -145,14 +146,22 @@ const Dashboard = () => {
               {/* Profile - Responsive */}
               <div className="flex items-center space-x-2 sm:space-x-3">
                 <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-white font-semibold text-xs sm:text-sm ${getAvatarColor(userProfile?.displayName || currentUser?.displayName || 'User')}`}>
-                  {userProfile?.photoURL || currentUser?.photoURL ? (
+                  {userProfile?.photoURL && !avatarError ? (
                     <img
-                      src={userProfile?.photoURL || currentUser?.photoURL}
+                      src={userProfile?.photoURL}
                       alt="Profile"
+                      onError={() => setAvatarError(true)}
+                      className="w-full h-full rounded-full object-cover"
+                    />
+                  ) : currentUser?.photoURL && !avatarError ? (
+                    <img
+                      src={currentUser?.photoURL}
+                      alt="Profile"
+                      onError={() => setAvatarError(true)}
                       className="w-full h-full rounded-full object-cover"
                     />
                   ) : (
-                    getInitials(userProfile?.displayName || currentUser?.displayName || 'User')
+                    <UserIcon className="w-5 h-5" />
                   )}
                 </div>
                 <div className="hidden sm:block">
