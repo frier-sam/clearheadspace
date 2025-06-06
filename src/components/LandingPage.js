@@ -91,7 +91,7 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-pink-50 relative overflow-hidden">
       {/* Navigation */}
-      <nav className="relative z-50 px-6 py-4 bg-white/80 backdrop-blur-lg border-b border-white/20">
+      <nav className="fixed inset-x-0 top-0 z-50 px-6 py-4 bg-white/80 backdrop-blur-lg border-b border-white/20">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -140,7 +140,8 @@ const LandingPage = () => {
       </nav>
 
       {menuOpen && (
-        <div className="md:hidden px-6 pb-4 bg-white/80 backdrop-blur-lg border-b border-white/20 space-y-2">
+        <div className="md:hidden fixed inset-x-0 top-16 z-40 px-6 pb-4 bg-white/90 backdrop-blur-lg border-b border-white/20 space-y-2">
+
           <Link
             to="/signin"
             className="block text-gray-700 hover:text-primary-600 transition-colors font-medium"
@@ -159,7 +160,7 @@ const LandingPage = () => {
       )}
 
       {/* Hero Section */}
-      <section className="relative z-10 px-6 py-20 lg:py-32">
+      <section className="relative z-10 px-6 pt-28 pb-20 lg:pt-40 lg:pb-32">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
