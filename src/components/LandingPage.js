@@ -141,6 +141,7 @@ const LandingPage = () => {
 
       {menuOpen && (
         <div className="md:hidden fixed inset-x-0 top-16 z-40 px-6 pb-4 bg-white/90 backdrop-blur-lg border-b border-white/20 space-y-2">
+
           <Link
             to="/signin"
             className="block text-gray-700 hover:text-primary-600 transition-colors font-medium"
