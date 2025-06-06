@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { 
-  HeartIcon, 
-  ShieldCheckIcon, 
-  ClockIcon, 
+import Logo from './Logo';
+import {
+  HeartIcon,
+  ShieldCheckIcon,
+  ClockIcon,
   UserGroupIcon,
   ChatBubbleLeftRightIcon,
   SparklesIcon,
   StarIcon,
-  PhoneIcon
+  PhoneIcon,
+  Bars3Icon,
+  XMarkIcon
 } from '@heroicons/react/24/outline';
 
 const LandingPage = () => {
   const [mounted, setMounted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 300], [0, -50]);
   const y2 = useTransform(scrollY, [0, 300], [0, -100]);
@@ -87,7 +91,7 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-pink-50 relative overflow-hidden">
       {/* Navigation */}
-      <nav className="relative z-50 px-6 py-4 bg-white/80 backdrop-blur-lg border-b border-white/20">
+      <nav className="fixed inset-x-0 top-0 z-50 px-6 py-4 bg-white/80 backdrop-blur-lg border-b border-white/20">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -95,9 +99,7 @@ const LandingPage = () => {
             transition={{ duration: 0.6 }}
             className="flex items-center space-x-2"
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center">
-              <HeartIcon className="w-6 h-6 text-white" />
-            </div>
+            <Logo className="w-10 h-10" />
             <span className="text-xl font-bold font-display bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
               ClearHeadSpace
             </span>
@@ -107,7 +109,7 @@ const LandingPage = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex items-center space-x-4"
+            className="hidden md:flex items-center space-x-4"
           >
             <Link
               to="/signin"
@@ -122,11 +124,42 @@ const LandingPage = () => {
               Get Started
             </Link>
           </motion.div>
+
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden p-2 text-gray-600"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? (
+              <XMarkIcon className="w-6 h-6" />
+            ) : (
+              <Bars3Icon className="w-6 h-6" />
+            )}
+          </button>
         </div>
       </nav>
 
+      {menuOpen && (
+        <div className="md:hidden fixed inset-x-0 top-16 z-40 px-6 pb-4 bg-white/90 backdrop-blur-lg border-b border-white/20 space-y-2">
+          <Link
+            to="/signin"
+            className="block text-gray-700 hover:text-primary-600 transition-colors font-medium"
+            onClick={() => setMenuOpen(false)}
+          >
+            Sign In
+          </Link>
+          <Link
+            to="/signup"
+            className="block btn btn-primary w-full text-center"
+            onClick={() => setMenuOpen(false)}
+          >
+            Get Started
+          </Link>
+        </div>
+      )}
+
       {/* Hero Section */}
-      <section className="relative z-10 px-6 py-20 lg:py-32">
+      <section className="relative z-10 px-6 pt-28 pb-20 lg:pt-40 lg:pb-32">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -374,9 +407,7 @@ const LandingPage = () => {
       <footer className="relative z-10 px-6 py-12 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-6">
-            <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center">
-              <HeartIcon className="w-5 h-5 text-white" />
-            </div>
+            <Logo className="w-8 h-8" />
             <span className="text-lg font-bold font-display">ClearHeadSpace</span>
           </div>
           <p className="text-gray-400 mb-4">
