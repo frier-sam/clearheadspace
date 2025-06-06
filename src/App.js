@@ -5,6 +5,7 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 import LoadingSpinner from './components/LoadingSpinner';
 import FloatingShapes from './components/FloatingShapes';
 import ProtectedRoute from './components/ProtectedRoute';
+import AdminRoute from './components/AdminRoute';
 
 // Lazy load components for better performance
 const LandingPage = lazy(() => import('./components/LandingPage'));
@@ -16,6 +17,7 @@ const BookingFlow = lazy(() => import('./components/BookingFlow'));
 const Profile = lazy(() => import('./components/Profile'));
 const BookingHistory = lazy(() => import('./components/BookingHistory'));
 const VideoCall = lazy(() => import('./components/VideoCall'));
+const AdminDashboard = lazy(() => import('./components/admin/AdminDashboard'));
 
 // Loading fallback component
 const PageLoadingFallback = () => (
@@ -93,15 +95,23 @@ const AppRoutes = () => {
             </ProtectedRoute>
           } 
         />
-        <Route 
-          path="/call/:bookingId" 
+        <Route
+          path="/call/:bookingId"
           element={
             <ProtectedRoute>
               <VideoCall />
             </ProtectedRoute>
-          } 
+          }
         />
-        
+        <Route
+          path="/admin"
+          element={
+            <AdminRoute>
+              <AdminDashboard />
+            </AdminRoute>
+          }
+        />
+
         {/* Catch all route */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
